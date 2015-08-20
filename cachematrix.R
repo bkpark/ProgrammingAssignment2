@@ -1,11 +1,8 @@
-## a set of functions for a special "matrix" that can cache its own inverse.
-
-## cacheSolve checks the cache for inverse
+## A set of functions for a special "matrix" that can cache its own inverse.
 
 ## makeCacheMatrix is constructor for cacheMatrix that can cache
 ## its own inverse; returns a list containing following four functions:
 ## set, get, setInverse, getInverse
-
 makeCacheMatrix <- function(x = matrix()) {
     inv <- NULL
     set <- function(y) {
@@ -19,10 +16,8 @@ makeCacheMatrix <- function(x = matrix()) {
                 setInverse=setInverse, getInverse=getInverse))
 }
 
-
 ## cacheSolve checks the cache for inverse; if cache not found
 ## computes inverse, caches it, and returns the inverse
-
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     inv <- x$getInverse()
@@ -41,7 +36,6 @@ cacheSolve <- function(x, ...) {
 ## aside from "cacheSolve"'s message, and since "setInverse" is no
 ## longer necessary it is hidden from user interface
 ## (unless directly accessed through "orig.matrix" element)
-
 makeCacheMatrix2 <- function(x = matrix()) {
     y <- makeCacheMatrix(x)
     getInverse <- function() cacheSolve(y)
